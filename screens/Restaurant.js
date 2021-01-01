@@ -91,11 +91,24 @@ const Restaurant = ({route, navigation}) => {
     )
   }
 
-  return (
-    <SafeAreaView
-      style={styles.container}
+  function renderFoodInfo() {
+    <Animated.ScrollView
+      horizontal
+      pagingEnabled
+      scrollEventThrottle={16}
+      snapToAlignment='center'
+      showsHorizontalScrollIndicator={false}
+      // onScroll={}
     >
+      
+    </Animated.ScrollView>
+  }
+
+  return (
+    <SafeAreaView style={styles.container} >
       {renderHeader()}
+      {renderFoodInfo()}
+
     </SafeAreaView>
   )
 }
