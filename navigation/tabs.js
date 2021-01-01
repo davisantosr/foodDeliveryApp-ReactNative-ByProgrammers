@@ -19,8 +19,6 @@ const Tabs = () => {
         showLabel: false,
         style: {
           borderTopWidth: 0,
-          borderRightWidth:0, 
-          borderLeftWidth:0,
           elevation:0,
           backgroundColor: 'transparent'
         }
@@ -41,8 +39,14 @@ const Tabs = () => {
               }}
 
             />
+          ),
+          tabBarButton: (props) => (
+            <TabBarCustomButton 
+              {...props}
+            />
           )
         }}
+        
       />
       <Tab.Screen
         name='Search'
@@ -58,6 +62,11 @@ const Tabs = () => {
                 tintColor: focused ? COLORS.primary : COLORS.secondary
               }}
 
+            />
+          ),
+          tabBarButton: (props) => (
+            <TabBarCustomButton 
+              {...props}
             />
           )
         }}
@@ -77,6 +86,11 @@ const Tabs = () => {
               }}
 
             />
+          ),
+          tabBarButton: (props) => (
+            <TabBarCustomButton 
+              {...props}
+            />
           )
         }}
       />
@@ -94,6 +108,11 @@ const Tabs = () => {
                 tintColor: focused ? COLORS.primary : COLORS.secondary
               }}
 
+            />
+          ),
+          tabBarButton: (props) => (
+            <TabBarCustomButton 
+              {...props}
             />
           )
         }}
