@@ -364,7 +364,7 @@ const restaurantData = [
             justifyContent: 'center',
             borderRadius: SIZES.radius
           }}>
-            <Text style={{...FONTS.h3}}>Current Location</Text>
+            <Text style={{...FONTS.h3}}>{initialCurrentLocation.streetName}</Text>
           </View>
 
         </View>
@@ -383,15 +383,82 @@ const restaurantData = [
               height: 30
             }}
           />
-          
+
         </TouchableOpacity>
 
+      </View>
+    )
+  }
+
+  function renderMainCategories() {
+    const renderItem = ({item}) => {
+      return (
+        <TouchableOpacity
+          style={{
+            padding: SIZES.padding,
+            paddingBottom: SIZES.padding * 2, 
+            backgroundColor: COLORS.primary, 
+            borderRadius: SIZES.radius,
+            alignItems: 'center', 
+            justifyContent: 'center',
+            marginRight: SIZES.padding,
+            ...styles.shadow
+          }}
+        >
+          <View
+            style={{
+              width: 50, 
+              height: 50,
+              borderRadius: 25,
+              alignItems: 'center',
+              justifyContent: 'center',
+              backgroundColor: COLORS.white
+            }}
+          >
+            <Image
+              source={item.icon}
+              resizeMode='contain'
+              style={{
+                width: 30,
+                height: 30
+              }}
+            />
+          </View>
+          <Text
+              style={{
+                maxHeight: 30,
+                margin: SIZES.padding,
+                color: COLORS.white,
+                ...FONTS.body5
+              }}
+            >
+              {item.name}
+            </Text>
+
+        </TouchableOpacity>
+      )
+
+    }
+    return (
+      <View style={{padding: SIZES.padding * 2}}>
+        <Text style={{...FONTS.h1, fontWeight: 'bold'}}>Main</Text>
+        <Text style={{...FONTS.h1}}>Categories</Text>
+
+        <FlatList
+          data={categoryData}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          keyExtractor={item => `${item.id}`}
+          renderItem={renderItem}
+          contentContainerStyle={{paddingVertical: SIZES.padding*2}}
+        />
       </View>
     )
   }
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
+      {renderMainCategories()}
 
     </SafeAreaView>
   )
