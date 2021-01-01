@@ -13,7 +13,7 @@ import {
 import { ceil } from 'react-native-reanimated'
 import { COLORS, icons, images, SIZES, FONTS } from '../constants'
 
-const Home = () => {
+const Home = ({navigation}) => {
 
    // Dummy Datas
 
@@ -485,7 +485,10 @@ const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocat
       return (
         <TouchableOpacity
           style={{marginBottom: SIZES.padding * 2}}
-          // onPress={() => navigate to screen}
+          onPress={() => navigation.navigate('Restaurant', {
+            item,
+            currentLocation
+          })}
         >
         {/* image */}
         <View style={{marginBottom: SIZES.padding}}>
