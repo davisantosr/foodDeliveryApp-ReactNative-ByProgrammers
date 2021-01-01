@@ -14,11 +14,21 @@ import { isIphoneX } from 'react-native-iphone-x-helper'
 
 import { icons, COLORS, SIZES, FONTS } from '../constants'
 
-const Restaurant = () => {
+const Restaurant = ({route}) => {
+
+  const [ restaurant, setRestaurant ] = React.useState(null)
+  const [ currentLocation, setCurrentLocation ] = React.useState(null)
+
+  React.useEffect(() => {
+    let {item, currentLocation} = route.params;
+    setRestaurant(item)
+    setCurrentLocation(currentLocation)
+  })
+
   return (
-    <View>
-      <Text>Restaurant</Text>
-    </View>
+    <SafeAreaView>
+      {renderHeaeder()}
+    </SafeAreaView>
   )
 }
 
