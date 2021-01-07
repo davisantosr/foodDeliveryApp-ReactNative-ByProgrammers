@@ -10,7 +10,6 @@ import {
   Image,
   FlatList
 } from 'react-native'
-import { ceil } from 'react-native-reanimated'
 import { COLORS, icons, images, SIZES, FONTS } from '../constants'
 
 const Home = ({navigation}) => {
@@ -564,7 +563,7 @@ const [currentLocation, setCurrentLocation] = React.useState(initialCurrentLocat
                   }}>
                     {getCategoryNameById(categoryId)}
                   </Text>
-                  <Text style={{...FONTS.h3, ...COLORS.darkgray}}> . </Text>
+                  <Text style={{...FONTS.h4, ...COLORS.darkgray}}> . </Text>
                 </View>
               )
             })}

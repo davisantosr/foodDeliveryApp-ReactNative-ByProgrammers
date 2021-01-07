@@ -8,6 +8,7 @@ import {
   Animated,
   View, 
   Text,
+  Alert,
 } from 'react-native'
 
 import { isIphoneX } from 'react-native-iphone-x-helper'
@@ -20,10 +21,12 @@ const Restaurant = ({route, navigation}) => {
   const [ currentLocation, setCurrentLocation ] = React.useState(null)
 
   React.useEffect(() => {
-    let {item, currentLocation} = route.params;
+    let item = route.params?.item
+    let currentLocation = route.params?.currentLocation
     setRestaurant(item)
     setCurrentLocation(currentLocation)
-  })
+        
+  },[route.params])
 
   function renderHeader() {
     return (
@@ -92,16 +95,43 @@ const Restaurant = ({route, navigation}) => {
   }
 
   function renderFoodInfo() {
-    <Animated.ScrollView
-      horizontal
-      pagingEnabled
-      scrollEventThrottle={16}
-      snapToAlignment='center'
-      showsHorizontalScrollIndicator={false}
-      // onScroll={}
-    >
+    console.log(restaurant?.menu)
+    return (
       
-    </Animated.ScrollView>
+      <Animated.ScrollView
+        horizontal
+        pagingEnabled
+        scrollEventThrottle={16}
+        snapToAlignment='center'
+        showsHorizontalScrollIndicator={false}
+        // onScroll={}
+      >
+        
+        {
+          restaurant?.menu.map((item, index) => {
+            return (
+            <View
+              key={`menu-${index}`}
+              style={{alignItems: 'center'}}
+            >
+              <View style={{ height: 100}}>
+                {/* Food image */}
+                <Image 
+                  source={item.photo}
+                  resizeMode='cover'
+                  style={{
+                    width: 100,
+                    height: 100
+                  }}
+                />
+              </View>
+            </View>
+          )})
+        }
+        
+      </Animated.ScrollView>
+
+    )
   }
 
   return (
