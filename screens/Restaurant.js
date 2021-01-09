@@ -364,8 +364,25 @@ const Restaurant = ({route, navigation}) => {
             </Text>
           </TouchableOpacity>
           </View>
-         
         </View>
+
+        {/* Iphone x - GAP */}
+        {
+          isIphoneX && 
+          <View
+            style={{
+              position: 'absolute',
+              bottom: -34, 
+              left: 0, 
+              right: 0, 
+              height: 34, 
+              backgroundColor: COLORS.white
+            }}
+          > 
+            
+          </View>
+        }
+
       </View>
       
     )
