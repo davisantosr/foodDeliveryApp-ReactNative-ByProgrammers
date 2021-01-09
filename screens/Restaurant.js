@@ -114,14 +114,14 @@ const Restaurant = ({route, navigation}) => {
               key={`menu-${index}`}
               style={{alignItems: 'center'}}
             >
-              <View style={{ height: 100}}>
+              <View style={{ height: SIZES.height * 0.35}}>
                 {/* Food image */}
                 <Image 
                   source={item.photo}
                   resizeMode='cover'
                   style={{
-                    width: 100,
-                    height: 100
+                    width: SIZES.width,
+                    height: '100%'
                   }}
                 />
               </View>
