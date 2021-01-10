@@ -39,7 +39,7 @@ const Restaurant = ({route, navigation}) => {
       if(item.length > 0) {
         let newQty = item[0].qty + 1
         item[0].qty = newQty
-        item[0].total = item[0] * price
+        item[0].total = item[0].qty * price
       } else {
         const newItem = {
           menuId: menuId, 
@@ -71,6 +71,16 @@ const Restaurant = ({route, navigation}) => {
     }
 
     return 0
+  }
+
+  function getBasketItemCount() {
+    let itemCount = orderItems.reduce((acc, cur) => acc + (cur.qty || 0), 0)
+    return itemCount
+  }
+
+  function sumOrder() {
+    let total = orderItems.reduce((acc, cur) => acc + (cur.total || 0), 0)
+    return total.toFixed(2)
   }
 
   function renderHeader() {
@@ -347,8 +357,8 @@ const Restaurant = ({route, navigation}) => {
               borderBottomWidth: 1,
             }}
           >
-            <Text style={{...FONTS.h3}}>Items in Cart</Text>
-            <Text style={{...FONTS.h3}}>$ 45</Text>
+            <Text style={{...FONTS.h3}}>Items in Cart: {getBasketItemCount()}</Text>
+            <Text style={{...FONTS.h3}}>$ {sumOrder()}</Text>
           </View>
 
           <View style={{
