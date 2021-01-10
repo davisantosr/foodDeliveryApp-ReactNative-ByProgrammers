@@ -6,9 +6,18 @@ import {
 } from 'react-native'
 
 const OrderDelivery = () => {
+
+  function renderMap() {
+    return(
+      <View>
+
+      </View>
+    )
+  }
+
   return (
-    <View>
-      <Text>OrderDelivery</Text>
+    <View style={{flex: 1}}>
+      {renderMap()}
     </View>
   )
 }
